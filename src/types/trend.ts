@@ -6,7 +6,7 @@ export interface Trend {
   thumbnailImage: string
   trendDate: string
   status: 'pending' | 'approved' | 'rejected'
-  createdAt: string
+  createdAt: string 
 }
 
 export interface HomeResponse {
