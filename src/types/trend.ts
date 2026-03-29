@@ -3,6 +3,7 @@ export interface Trend {
   title: string
   slug: string
   videoUrl: string
+  platform?: 'instagram' | 'youtube'
   thumbnailImage: string
   trendDate: string
   status: 'pending' | 'approved' | 'rejected'

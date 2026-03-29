@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { TrendCard } from '../components/TrendCard'
 import { api } from '../services/api'
@@ -20,38 +20,55 @@ export function HomePage() {
     return <p className="page-loading">Loading trends...</p>
   }
 
+  const latestPool = data.rails.latest
+  const heroTrend = data.hero ?? latestPool[0] ?? data.rails.throwback[0] ?? null
+  const latest = latestPool.slice(0, 6)
+
   return (
     <main className="page home-page">
-      {data.hero && (
+      {heroTrend && (
         <section
-          className="hero"
-          style={{ backgroundImage: `linear-gradient(to right, #050506 22%, rgba(5,5,6,0.12)), url(${data.hero.thumbnailImage})` }}
+          className="hero hero--featured"
+          style={{ '--hero-image': `url(${heroTrend.thumbnailImage})` } as CSSProperties}
         >
           <div className="hero__content">
-            <p className="hero__kicker">ViralSafari Original</p>
-            <h1>{data.hero.title}</h1>
-            <p>Travel back to the trend that ruled Instagram on {new Date(data.hero.trendDate).toLocaleDateString()}.</p>
-            <Link className="hero__button" to={`/play/${data.hero.slug}`}>Play Safari</Link>
+            <p className="hero__kicker">Series</p>
+            <h1>{heroTrend.title}</h1>
+            <p className="hero__rankline">Top 10 | Trending this week</p>
+            <p className="hero__description">
+              Scroll back to the post that dominated feeds on {new Date(heroTrend.trendDate).toLocaleDateString()} and relive the original moment.
+            </p>
+            <div className="hero__actions">
+              <Link className="hero__button hero__button--primary" to={`/play/${heroTrend.slug}`}>Play</Link>
+              <Link className="hero__button hero__button--ghost" to="/safari">More info</Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!heroTrend && (
+        <section className="hero hero--empty">
+          <div className="hero__content">
+            <p className="hero__kicker">No content yet</p>
+            <h1>Latest trend will appear here</h1>
+            <p className="hero__description">
+              There are no approved trends available right now. Approve a submitted trend from admin moderation and refresh this page.
+            </p>
           </div>
         </section>
       )}
 
       <section className="rail">
         <h2>Trending Now</h2>
-        <div className="rail__grid">
-          {data.rails.latest.map((trend) => (
-            <TrendCard key={trend._id} trend={trend} />
-          ))}
-        </div>
-      </section>
-
-      <section className="rail">
-        <h2>Throwback Picks</h2>
-        <div className="rail__grid">
-          {data.rails.throwback.map((trend) => (
-            <TrendCard key={trend._id} trend={trend} />
-          ))}
-        </div>
+        {latest.length > 0 ? (
+          <div className="rail__grid rail__grid--shorts">
+            {latest.map((trend) => (
+              <TrendCard key={trend._id} trend={trend} />
+            ))}
+          </div>
+        ) : (
+          <p className="page-loading">No approved trends found yet.</p>
+        )}
       </section>
     </main>
   )

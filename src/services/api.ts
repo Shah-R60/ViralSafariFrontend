@@ -1,4 +1,4 @@
-import { getToken } from './auth'
+import { clearToken, getToken } from './auth'
 import type { HomeResponse, PlayerResponse, SafariResponse } from '../types/trend'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:5000/api'
@@ -48,9 +48,16 @@ async function request<T>(path: string, options: RequestInit = {}, retried = fal
       localStorage.setItem('viralsafari_refresh_expires_at', refreshedPayload.refreshTokenExpiresAt)
       return request<T>(path, options, true)
     }
+
+    clearToken()
+    throw new Error('Unauthorized')
   }
 
   if (!response.ok) {
+    if (response.status === 401) {
+      clearToken()
+      throw new Error('Unauthorized')
+    }
     throw new Error(payload.message ?? 'Request failed')
   }
 

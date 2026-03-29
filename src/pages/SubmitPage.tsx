@@ -28,11 +28,17 @@ export function SubmitPage() {
       <section className="submit-card">
         <h1>Submit a Trend</h1>
         <p>Your trend will go live after admin approval.</p>
+        <p>Accepted links: Instagram reels/posts, YouTube Shorts, youtu.be, and YouTube watch URLs.</p>
 
         <form onSubmit={onSubmit} className="submit-form">
           <label>
             Link
-            <input name="link" type="url" required placeholder="https://www.instagram.com/reel/..." />
+            <input
+              name="link"
+              type="url"
+              required
+              placeholder="https://www.instagram.com/reel/... or https://youtube.com/shorts/..."
+            />
           </label>
 
           <label>
