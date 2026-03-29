@@ -47,6 +47,31 @@ export function SubmitPage() {
           </label>
 
           <label>
+            Trend Type
+            <select name="trendType" required defaultValue="">
+              <option value="" disabled>Select trend type</option>
+              <option value="dance">Dance</option>
+              <option value="meme">Meme</option>
+              <option value="aesthetic">Aesthetic</option>
+              <option value="info">Info</option>
+              <option value="lipsync">Lipsync</option>
+              <option value="audio">Audio</option>
+            </select>
+          </label>
+
+          <label>
+            Reason To Watch
+            <select name="reasonToWatch" required defaultValue="">
+              <option value="" disabled>Select reason</option>
+              <option value="audio-driven">Audio-driven</option>
+              <option value="meme">Meme</option>
+              <option value="visual-edit">Visual-edit</option>
+              <option value="pov-dialogue">POV-dialogue</option>
+              <option value="challenge">Challenge</option>
+            </select>
+          </label>
+
+          <label>
             Date
             <input name="date" type="date" required />
           </label>

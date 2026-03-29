@@ -1,9 +1,14 @@
+export type TrendType = 'dance' | 'meme' | 'aesthetic' | 'info' | 'lipsync' | 'audio'
+export type ReasonToWatch = 'audio-driven' | 'meme' | 'visual-edit' | 'pov-dialogue' | 'challenge'
+
 export interface Trend {
   _id: string
   title: string
   slug: string
   videoUrl: string
   platform?: 'instagram' | 'youtube'
+  trendType?: TrendType
+  reasonToWatch?: ReasonToWatch
   thumbnailImage: string
   trendDate: string
   status: 'pending' | 'approved' | 'rejected'

@@ -66,6 +66,8 @@ export function PlayerPage() {
 
   const platform = state.data ? (state.data.trend.platform ?? detectPlatform(state.data.trend.videoUrl)) : 'unknown'
   const fallbackLabel = platform === 'youtube' ? 'Open on YouTube' : 'Open on Instagram'
+  const trendTypeLabel = state.data?.trend.trendType ?? 'unclassified'
+  const reasonLabel = state.data?.trend.reasonToWatch ?? 'general'
 
   useEffect(() => {
     let cancelled = false
@@ -172,6 +174,11 @@ export function PlayerPage() {
 
         <div className="player-stage">
           <h1>{state.data.trend.title}</h1>
+
+          <div className="player-meta">
+            <span className="meta-chip">{trendTypeLabel}</span>
+            <span className="meta-chip">{reasonLabel}</span>
+          </div>
           
           {state.embedHtml && (
             <div className="player-embed" dangerouslySetInnerHTML={{ __html: state.embedHtml }} />
