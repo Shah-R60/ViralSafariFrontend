@@ -22,7 +22,7 @@ export function HomePage() {
 
   const latestPool = data.rails.latest
   const heroTrend = data.hero ?? latestPool[0] ?? data.rails.throwback[0] ?? null
-  const latest = latestPool.slice(0, 6)
+  const latest = latestPool.slice(0, 5)
 
   return (
     <main className="page home-page">
@@ -32,7 +32,7 @@ export function HomePage() {
           style={{ '--hero-image': `url(${heroTrend.thumbnailImage})` } as CSSProperties}
         >
           <div className="hero__content">
-            <p className="hero__kicker">Series</p>
+            {/* <p className="hero__kicker">SERIES</p> */}
             <h1>{heroTrend.title}</h1>
             <p className="hero__rankline">Top 10 | Trending this week</p>
             <p className="hero__description">

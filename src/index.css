@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;700;800&display=swap');
 
 :root {
   --bg-0: #060606;
@@ -21,13 +21,12 @@ html,
 body,
 #root {
   min-height: 100%;
+  background-color: #050505;
 }
 
 html {
-  background:
-    radial-gradient(circle at 70% 18%, rgba(229, 9, 20, 0.18), transparent 40%),
-    linear-gradient(130deg, var(--bg-0), var(--bg-1));
-  overscroll-behavior-y: none;
+  background: linear-gradient(180deg, #050505 0%, #111111 100%);
+  overscroll-behavior-y: auto;
 }
 
 body {
@@ -35,10 +34,8 @@ body {
   min-height: 100vh;
   color: var(--ink);
   font-family: 'Manrope', sans-serif;
-  background:
-    radial-gradient(circle at 70% 18%, rgba(229, 9, 20, 0.18), transparent 40%),
-    linear-gradient(130deg, var(--bg-0), var(--bg-1));
-  overscroll-behavior-y: none;
+  background: linear-gradient(180deg, #050505 0%, #111111 100%);
+  overscroll-behavior-y: auto;
 }
 
 a {
@@ -48,6 +45,7 @@ a {
 .app-layout {
   display: flex;
   min-height: 100vh;
+  background-color: #050505;
 }
 
 .side-rail {
@@ -124,13 +122,12 @@ a {
 
 .hero {
   border-radius: 1rem;
-  min-height: clamp(450px, 72vh, 680px);
+  min-height: clamp(360px, 62vh, 560px);
   background-size: cover;
   background-position: center top;
   display: flex;
   align-items: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
 }
 
@@ -145,7 +142,7 @@ a {
   position: absolute;
   inset-block: 0.85rem;
   inset-inline-end: 0;
-  width: min(58vw, 860px);
+  width: min(52vw, 720px);
   background-image: var(--hero-image);
   background-repeat: no-repeat;
   background-size: contain;
@@ -170,7 +167,7 @@ a {
 }
 
 .hero--empty {
-  background: linear-gradient(140deg, rgba(15, 15, 15, 0.96), rgba(35, 8, 11, 0.86));
+  background: linear-gradient(140deg, rgba(15, 15, 15, 0.96), rgba(22, 22, 22, 0.9));
 }
 
 .hero__content {
@@ -181,10 +178,11 @@ a {
 }
 
 .hero__kicker {
-  color: rgba(255, 255, 255, 0.82);
+  color: #91c7ff;
   text-transform: uppercase;
-  letter-spacing: 0.26em;
-  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  font-size: 0.68rem;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -218,7 +216,11 @@ a {
 }
 
 .hero h1 {
+  font-family: 'Cinzel', serif;
   font-size: clamp(2.8rem, 8vw, 6.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
 }
 
 .hero__button,
@@ -283,17 +285,17 @@ a {
 }
 
 .rail__grid .trend-card {
-  flex: 1 1 320px;
-  max-width: 420px;
-}
-
-.rail__grid--shorts .trend-card {
-  flex: 1 1 280px;
+  flex: 1 1 260px;
   max-width: 340px;
 }
 
+.rail__grid--shorts .trend-card {
+  flex: 1 1 220px;
+  max-width: 270px;
+}
+
 .rail__grid--shorts .trend-card img {
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 2 / 3;
 }
 
 .date-block__list {
@@ -301,8 +303,8 @@ a {
 }
 
 .date-block__list .trend-card {
-  flex: 1 1 220px;
-  max-width: 300px;
+  flex: 1 1 190px;
+  max-width: 250px;
 }
 
 .trend-card {
@@ -332,7 +334,14 @@ a {
 
 .trend-card__meta h3 {
   margin: 0;
-  font-size: 0.93rem;
+  width: 100%;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: #f2f5f9;
 }
 
 .trend-card__meta p {
@@ -414,7 +423,7 @@ a {
 
 .player-embed {
   width: min(100%, 430px);
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 2 / 3;
   margin-inline: auto;
 }
 
@@ -568,7 +577,7 @@ a {
   }
 
   .hero {
-    min-height: 520px;
+    min-height: 440px;
     align-items: flex-end;
   }
 
